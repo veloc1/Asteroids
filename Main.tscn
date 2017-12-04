@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://space.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://ship_kbd.gd" type="Script" id=4]
-[ext_resource path="res://arrow.gd" type="Script" id=5]
+[ext_resource path="res://ship_kbd.gd" type="Script" id=3]
+[ext_resource path="res://arrow.gd" type="Script" id=4]
+[ext_resource path="res://ship_draw.gd" type="Script" id=5]
 
 [node name="root" type="Node"]
 
@@ -16,18 +16,111 @@ script/script = ExtResource( 2 )
 
 [node name="controlled_ship" type="Sprite" parent="."]
 
-transform/pos = Vector2( 148, 69 )
-texture = ExtResource( 3 )
-script/script = ExtResource( 4 )
+transform/pos = Vector2( 124.78, 59.0487 )
+flip_v = true
+script/script = ExtResource( 3 )
 rotationVelocityLimit = 0.1
 rotationAccelerationSpeed = 0.01
 rotationAccelerationDamping = 0.003
-accelerationSpeed = 1
-velocityLimit = 100
-velocityDamping = 0.04
+accelerationSpeed = 0.1
+velocityLimit = 10
+velocityDamping = 0.005
 
 [node name="arrow1" type="Node2D" parent="controlled_ship"]
 
+visibility/visible = false
+script/script = ExtResource( 4 )
+
+[node name="ship" type="Node2D" parent="controlled_ship"]
+
+transform/pos = Vector2( -0.0184941, 14.5952 )
 script/script = ExtResource( 5 )
+
+[node name="engine_right" type="Particles2D" parent="controlled_ship"]
+
+transform/pos = Vector2( -8.98105, -9.5798 )
+config/amount = 128
+config/lifetime = 0.1
+config/emitting = false
+config/process_mode = 1
+config/local_space = false
+params/direction = 180.0
+params/spread = 30.0
+params/linear_velocity = 20.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 3.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 50.0
+
+[node name="engine_left" type="Particles2D" parent="controlled_ship"]
+
+transform/pos = Vector2( 8.98111, -9.5798 )
+config/amount = 128
+config/lifetime = 0.1
+config/emitting = false
+config/process_mode = 1
+config/local_space = false
+params/direction = 180.0
+params/spread = 30.0
+params/linear_velocity = 20.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 3.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 1.0
+
+[node name="scores" type="Label" parent="."]
+
+rect/scale = Vector2( 2, 2 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 6.0
+margin/top = 6.0
+margin/right = 46.0
+margin/bottom = 20.0
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="game_over" type="Label" parent="."]
+
+visibility/visible = false
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 14.0
+text = "GAME OVER
+press space to restart
+"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 
